@@ -1,0 +1,32 @@
+owner: nuware-ops
+repo: super-calendar.io
+
+sites:
+  - name: Super-Calendar Website
+    url: https://super-calendar.io
+    expectedStatusCodes:
+      - 200
+  - name: Health
+    url: https://super-calendar.io/health
+    expectedStatusCodes:
+      - 200
+  - name: Runtime Manifest
+    url: https://super-calendar.io/api/runtime
+    expectedStatusCodes:
+      - 200
+  - name: Swagger
+    url: https://super-calendar.io/api/swagger/
+    expectedStatusCodes:
+      - 200
+  - name: Runtime Calendar Snapshot
+    url: https://super-calendar.io/api/docs/runtime/calendar.ics
+    expectedStatusCodes:
+      - 200
+  - name: Exchange USD BRL
+    url: https://super-calendar.io/api/exchange?base=USD&target=BRL&lang=pt-BR&format=json
+    expectedStatusCodes:
+      - 200
+  - name: Weather Sao Paulo
+    url: https://super-calendar.io/api/weather?city=Sao%20Paulo&units=metric&lang=pt-BR&format=json
+    expectedStatusCodes:
+      - 200
