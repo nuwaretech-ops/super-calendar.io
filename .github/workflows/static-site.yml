@@ -1,44 +1,36 @@
-name: Static Site CI
+name: Upptime Static Site
 
 on:
-  workflow_dispatch:
   schedule:
     - cron: "0 * * * *"
-  push:
-    branches:
-      - master
-      - main
-    paths:
-      - ".upptimerc.yml"
-      - "history/**"
-      - "README.md"
-      - "src/**"
+  repository_dispatch:
+    types: [static_site]
+  workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ${{ github.repository }}-upptime
+  cancel-in-progress: false
 
 jobs:
   static-site:
+    name: Build status website
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v5
         with:
-          node-version: 20
+          token: ${{ secrets.GH_PAT || github.token }}
 
-      - name: Install Upptime
-        run: npm install
-
-      - name: Build Site
-        run: npx upptime static-site
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Build static site
+        uses: upptime/uptime-monitor@v1.42.2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          publish_branch: gh-pages
+          command: static-site
+        env:
+          GH_PAT: ${{ secrets.GH_PAT || github.token }}
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}
