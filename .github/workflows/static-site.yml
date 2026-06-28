@@ -1,0 +1,44 @@
+name: Static Site CI
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - ".upptimerc.yml"
+      - "history/**"
+      - "README.md"
+      - "src/**"
+
+permissions:
+  contents: write
+
+jobs:
+  static-site:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Upptime
+        run: npm install
+
+      - name: Build Site
+        run: npx upptime static-site
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
