@@ -1,4 +1,4 @@
-const GITHUB_RAW = 'https://raw.githubusercontent.com/NuwareTech/super-calendar.io/master/history/summary.json';
+const GITHUB_RAW = 'https://raw.githubusercontent.com/NuwareTech-ops/super-calendar.io/master/history/summary.json';
 
 function fmtUrl(url) {
   try {
