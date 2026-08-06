@@ -1,7 +1,7 @@
 url: https://super-calendar.io/api/exchange?base=USD&target=BRL&lang=pt-BR&format=json
 status: up
 code: 200
-responseTime: 360
-lastUpdated: 2026-08-06T08:46:48.275Z
+responseTime: 273
+lastUpdated: 2026-08-06T14:26:25.907Z
 startTime: 2026-06-12T07:37:36.810Z
 generator: Upptime <https://github.com/upptime/upptime>
