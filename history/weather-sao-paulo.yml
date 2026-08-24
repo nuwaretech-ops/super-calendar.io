@@ -1,7 +1,7 @@
 url: https://super-calendar.io/api/weather?city=Sao%20Paulo&units=metric&lang=pt-BR&format=json
 status: up
 code: 200
-responseTime: 270
-lastUpdated: 2026-08-24T01:44:21.572Z
+responseTime: 244
+lastUpdated: 2026-08-24T07:09:51.268Z
 startTime: 2026-06-12T07:37:37.414Z
 generator: Upptime <https://github.com/upptime/upptime>
